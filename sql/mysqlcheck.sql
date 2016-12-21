@@ -172,21 +172,6 @@ CREATE TABLE `django_site` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=gbk;
 
 -- ----------------------------
--- Table structure for mysqlfab_detail
--- ----------------------------
-DROP TABLE IF EXISTS `mysqlfab_detail`;
-CREATE TABLE `mysqlfab_detail` (
-  `id` smallint(10) unsigned NOT NULL AUTO_INCREMENT,
-  `master_id` smallint(6) unsigned NOT NULL DEFAULT '0' COMMENT '需求发布主表mysqlcheck_master的id',
-  `sql` text COMMENT 'SQL',
-  `descs` varchar(900) NOT NULL DEFAULT '' COMMENT '描述',
-  `gmt_create` datetime DEFAULT NULL COMMENT '创建时间',
-  PRIMARY KEY (`id`),
-  KEY `master_id` (`master_id`),
-  CONSTRAINT `master_id` FOREIGN KEY (`master_id`) REFERENCES `mysqlfab_master` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='需求发布明细表';
-
--- ----------------------------
 -- Table structure for mysqlfab_master
 -- ----------------------------
 DROP TABLE IF EXISTS `mysqlfab_master`;
@@ -203,6 +188,23 @@ CREATE TABLE `mysqlfab_master` (
   `gmt_create` datetime DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='需求发布主表';
+
+
+-- ----------------------------
+-- Table structure for mysqlfab_detail
+-- ----------------------------
+DROP TABLE IF EXISTS `mysqlfab_detail`;
+CREATE TABLE `mysqlfab_detail` (
+  `id` smallint(10) unsigned NOT NULL AUTO_INCREMENT,
+  `master_id` smallint(6) unsigned NOT NULL DEFAULT '0' COMMENT '需求发布主表mysqlcheck_master的id',
+  `sql` text COMMENT 'SQL',
+  `descs` varchar(900) NOT NULL DEFAULT '' COMMENT '描述',
+  `gmt_create` datetime DEFAULT NULL COMMENT '创建时间',
+  PRIMARY KEY (`id`),
+  KEY `master_id` (`master_id`),
+  CONSTRAINT `master_id` FOREIGN KEY (`master_id`) REFERENCES `mysqlfab_master` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='需求发布明细表';
+
 
 -- ----------------------------
 -- Table structure for superdba_groupmenu
