@@ -13,6 +13,18 @@ CREATE TABLE `auth_group` (
 ) ENGINE=InnoDB DEFAULT CHARSET=gbk;
 
 -- ----------------------------
+-- Table structure for django_content_type
+-- ----------------------------
+DROP TABLE IF EXISTS `django_content_type`;
+CREATE TABLE `django_content_type` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `app_label` varchar(100) NOT NULL,
+  `model` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `app_label` (`app_label`,`model`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=82 DEFAULT CHARSET=gbk;
+
+-- ----------------------------
 -- Table structure for auth_permission
 -- ----------------------------
 DROP TABLE IF EXISTS `auth_permission`;
@@ -124,17 +136,7 @@ CREATE TABLE `django_admin_log` (
   CONSTRAINT `django_admin_log_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=148 DEFAULT CHARSET=gbk;
 
--- ----------------------------
--- Table structure for django_content_type
--- ----------------------------
-DROP TABLE IF EXISTS `django_content_type`;
-CREATE TABLE `django_content_type` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `app_label` varchar(100) NOT NULL,
-  `model` varchar(100) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `app_label` (`app_label`,`model`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=82 DEFAULT CHARSET=gbk;
+
 
 -- ----------------------------
 -- Table structure for django_migrations
